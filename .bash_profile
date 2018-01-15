@@ -7,3 +7,4 @@
 eval $(ssh-agent)
 
 GIT_EDITOR="emacsclient"
+EDITOR="emacsclient"
