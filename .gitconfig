@@ -1,0 +1,8 @@
+[user]
+	email = tuedachu@gmail.com
+	name = tuedachu
+
+[core]
+	pager=cat
+[color]
+	diff = always
