@@ -6,5 +6,8 @@
 
 eval $(ssh-agent)
 
-GIT_EDITOR="emacsclient"
-EDITOR="emacsclient"
+export GIT_EDITOR="emacsclient"
+export EDITOR="emacsclient"
+
+export PATH="$PATH:$HOME/.local/bin"
+
