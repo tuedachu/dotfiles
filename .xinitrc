@@ -4,9 +4,11 @@
 setxkbmap -option ctrl:nocaps
 
 while true; do
-    date
+    d=$(date)
+    b=$(acpi -b)
+    echo " " $d " - " $b
     sleep 1
-done  | dzen2 -dock -p -ta l &
+done | dzen2 -dock -p -ta l &
 
 emacs --daemon -f exwm-enable
 exec emacsclient -c	       	
