@@ -6,6 +6,8 @@
 
 eval $(ssh-agent)
 
+udiskie &
+
 export GIT_EDITOR="emacsclient"
 export EDITOR="emacsclient"
 
