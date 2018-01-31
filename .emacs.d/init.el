@@ -7,6 +7,8 @@
 ;;  
 (pinentry-start)
 
+(setq user-full-name "Arnaud Hoffmann")
+
 (require 'exwm)
 (require 'exwm-config)
 
@@ -26,6 +28,11 @@
 (load "keybindings")
 (load "config-helm")
 (load "config-mu4e")
+(load "hook-screen-change")
+(load "config-emms")
+
+
+;; C mode
 (semantic-mode 1)
 
 
@@ -34,13 +41,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(helm-source-names-using-follow (quote ("Regexp Builder" "Variables" "Imenu" "Occur")))
+ '(helm-source-names-using-follow
+   (quote
+    ("All Eshell prompts" "Regexp Builder" "Variables" "Imenu" "Occur")))
  '(package-selected-packages
    (quote
-    (helm-system-packages helm with-editor org-plus-contrib exwm)))
+    (markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm)))
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -56,7 +66,9 @@
 
 (with-eval-after-load 'em-term
   (add-to-list 'eshell-visual-commands "htop")
-  (add-to-list 'eshell-visual-commands "watch"))
+  (add-to-list 'eshell-visual-commands "watch")
+  (add-to-list 'eshell-visual-commands "gtypist")
+  (add-to-list 'eshell-visual-commands "ncdu"))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -81,3 +93,26 @@
 (add-hook 'exwm-update-title-hook 'tuedachu-exwm-rename-buffer)
 
 
+(show-paren-mode)
+
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;; TODO: make it more lispie...
+(when (and (executable-find "fish")
+           (require 'fish-completion nil t))
+  (global-fish-completion-mode))
+
+(setq transmission-refresh-modes '(transmission-mode transmission-files-mode transmission-info-mode transmission-peers-mode)
+      transmission-refresh-interval 1)
+
+
+
+;; default browser
+(setq browse-url-generic-program (executable-find "qutebrowser"))
+(setq browse-url-browser-function 'browse-url-generic)
+
+
+(require 'exwm-randr)
+(setq exwm-randr-workspace-output-plist '(0 "VGA1"))
+(add-hook 'exwm-randr-screen-change-hook 'tuedachu-change-screen-hook)
+(exwm-randr-enable)
