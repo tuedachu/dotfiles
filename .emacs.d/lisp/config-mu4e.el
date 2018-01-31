@@ -1,9 +1,9 @@
 (require 'mu4e)
 
 ; Configuration of the smtp server
-'(send-mail-function (quote smtpmail-send-it))
-'(smtpmail-smtp-server "smtp.gmail.com")
-'(smtpmail-smtp-service 25))
+(setq send-mail-function (quote smtpmail-send-it))
+(setq smtpmail-smtp-server "smtp.gmail.com")
+(setq smtpmail-smtp-service 25)
 
 (setq mu4e-maildir "/home/tuedachu/.cache/mail")
 (setq mu4e-get-mail-command "mbsync -a")
