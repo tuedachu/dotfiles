@@ -24,16 +24,18 @@
 (add-hook 'eshell-mode-hook 'tuedachu-set-auto-completion-eshell)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
-(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x 
+(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-  
+
 (global-set-key (kbd "s-f") 'helm-locate)
 
 (global-set-key (kbd "M-s f") 'helm-semantic-or-imenu)
 (global-set-key (kbd "M-s o") 'helm-occur)
+
+(global-set-key (kbd "s-c") 'helm-resume)
 
 (global-set-key (kbd "C-h a") 'helm-apropos)
 (setq helm-follow-mode-persistent t)
@@ -63,4 +65,3 @@
 
 (helm-mode 1)
 (dired-async-mode)
-
