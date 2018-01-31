@@ -1,3 +1,4 @@
+
 (require 'helm)
 (require 'helm-config)
 
@@ -10,6 +11,17 @@
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+;; completion with tab in eshell
+(defun tuedachu-set-auto-completion-eshell ()
+  (define-key eshell-mode-map (kbd "<tab>") 'helm-esh-pcomplete)
+  (define-key eshell-mode-map (kbd "M-s") nil)
+  (define-key eshell-mode-map (kbd "M-s f") 'helm-eshell-prompts-all)
+  (define-key eshell-mode-map (kbd "M-r") 'helm-eshell-history))
+
+(setq helm-show-completion-display-function nil)
+
+(add-hook 'eshell-mode-hook 'tuedachu-set-auto-completion-eshell)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x 
@@ -53,6 +65,8 @@
 (setq helm-autoresize-min-height 20)
 (helm-autoresize-mode 1)
 
-(helm-mode 1)
-
 (setq helm-findutils-search-full-path t)
+
+(helm-mode 1)
+(dired-async-mode)
+
