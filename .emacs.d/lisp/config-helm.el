@@ -29,14 +29,8 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-
-(defun tuedachu/find-files-in-home ()
-  "Fuzzy find files in home directory  using the function 'helm-find'."
-  (interactive)
-  (let ((default-directory "~"))
-    (helm-find nil)))
   
-(global-set-key (kbd "s-f") 'tuedachu/find-files-in-home)
+(global-set-key (kbd "s-f") 'helm-locate)
 
 (global-set-key (kbd "M-s f") 'helm-semantic-or-imenu)
 (global-set-key (kbd "M-s o") 'helm-occur)
