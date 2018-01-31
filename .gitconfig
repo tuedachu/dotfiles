@@ -4,5 +4,4 @@
 
 [core]
 	pager=cat
-[color]
-	diff = always
+
