@@ -63,5 +63,13 @@
 
 (setq helm-findutils-search-full-path t)
 
+(global-set-key (kbd "s-g") (lambda ()
+			      (interactive)
+			      (helm-grep-do-git-grep t)))
+
+(setq helm-grep-git-grep-command "git --no-pager grep -n%cH --color=always --full-name -e %p -- %f")
+
+
 (helm-mode 1)
 (dired-async-mode)
+
