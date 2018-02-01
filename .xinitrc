@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # Change CAPS -> CTRL
-setxkbmap -option ctrl:nocaps
+setxkbmap -layout us -variant "" -option ctrl:nocaps
+xkbcomp -I"$HOME/.xkb" "$HOME/.xkb/usim.xkb" $DISPLAY 2>/dev/null
 
 while true; do
     d=$(date)
