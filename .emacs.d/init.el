@@ -36,6 +36,7 @@
 ;Org files used for the agenda 
 (setq org-agenda-files '("~/perso/notes.org"))
 
+(load "patch-eshell")
 (with-eval-after-load 'em-term
   (add-to-list 'eshell-visual-commands "htop")
   (add-to-list 'eshell-visual-commands "watch")
