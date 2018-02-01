@@ -12,4 +12,4 @@ export GIT_EDITOR="emacsclient"
 export EDITOR="emacsclient"
 
 export PATH="$PATH:$HOME/.local/bin"
-
+export GOPATH="$HOME/projects/go"
