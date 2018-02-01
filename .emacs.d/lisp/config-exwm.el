@@ -27,6 +27,11 @@
 ; Start a new eshell with Super + <Return> 
 (exwm-input-set-key (kbd "<s-return>") 'eshell)
 
+;; Slock
+(exwm-input-set-key (kbd "s-l") (lambda ()
+				  (interactive)
+				 (call-process "slock")))
+
 ;; EMMS shortcut
 (exwm-input-set-key (kbd "s-e") 'emms-smart-browse)
 
