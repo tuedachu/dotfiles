@@ -30,7 +30,7 @@
 ;; Slock
 (exwm-input-set-key (kbd "s-l") (lambda ()
 				  (interactive)
-				 (call-process "slock")))
+				  (call-process "slock")))
 
 ;; EMMS shortcut
 (exwm-input-set-key (kbd "s-e") 'emms-smart-browse)
@@ -41,6 +41,7 @@
 (exwm-input-set-key (kbd "<s-right>") 'windmove-right)
 (exwm-input-set-key (kbd "<s-left>") 'windmove-left)
 (exwm-input--update-global-prefix-keys)
+;;(setq exwm-input-line-mode-passthrough nil)
 
 ;; 's-&': Launch application
 (exwm-input-set-key (kbd "s-&")
