@@ -106,4 +106,18 @@
 		    (smtpmail-smtp-service . 587)))))
 
 
+
+;;; This sets `mu4e-user-mail-address-list' to the concatenation of all
+;;; `user-mail-address' values for all contexts.
+;;; Required when using multiple addresses and if we don't want to
+;;; reply to ourselves.
+(setq mu4e-user-mail-address-list
+      (delq nil
+            (mapcar (lambda (context)
+                      (when (mu4e-context-vars context)
+                        (cdr (assq 'user-mail-address (mu4e-context-vars context)))))
+                    mu4e-contexts)))
+
+
+
 (global-set-key (kbd "s-s") 'helm-mu)
