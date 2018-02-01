@@ -29,7 +29,7 @@
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono")) 
 
 ;; Unbind <C-z>
-(global-set-key (kbd "C-z") 
+(global-set-key (kbd "C-z") nil)
 ;; comment line
 (global-set-key (kbd "M-;") 'comment-line)
 
