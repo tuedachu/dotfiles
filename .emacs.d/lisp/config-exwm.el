@@ -1,9 +1,41 @@
+(require 'exwm)
+(require 'exwm-config)
+(exwm-enable)
+(exwm-config-misc)
+
+(defun tuedachu-exwm-rename-buffer ()
+  (exwm-workspace-rename-buffer exwm-title))
+
+(add-hook 'exwm-update-title-hook 'tuedachu-exwm-rename-buffer)
+
+;; Function to automatically toggle between internal/external screens
+(defun tuedachu-change-screen-hook ()
+  (with-temp-buffer
+    (call-process "xrandr" nil t nil)
+    (beginning-of-buffer)
+    (if (search-forward "VGA1 connected" nil 'noerror)
+        (start-process-shell-command
+         "xrandr" nil "xrandr --output VGA1 --primary --auto --output LVDS1 --off")
+      (start-process-shell-command
+       "xrandr" nil "xrandr --output LVDS1 --auto"))))
+
+(require 'exwm-randr)
+(setq exwm-randr-workspace-output-plist '(0 "VGA1"))
+(add-hook 'exwm-randr-screen-change-hook 'tuedachu-change-screen-hook)
+(exwm-randr-enable)
 
 ; Start a new eshell with Super + <Return> 
 (exwm-input-set-key (kbd "<s-return>") 'eshell)
 
 ;; EMMS shortcut
 (exwm-input-set-key (kbd "s-e") 'emms-smart-browse)
+
+;; keybindings to move among exwm windows
+(exwm-input-set-key (kbd "<s-up>") 'windmove-up)
+(exwm-input-set-key (kbd "<s-down>") 'windmove-down)
+(exwm-input-set-key (kbd "<s-right>") 'windmove-right)
+(exwm-input-set-key (kbd "<s-left>") 'windmove-left)
+(exwm-input--update-global-prefix-keys)
 
 ;; 's-&': Launch application
 (exwm-input-set-key (kbd "s-&")
