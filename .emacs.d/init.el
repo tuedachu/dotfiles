@@ -26,6 +26,7 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 (load "keybindings")
+(load "config-exwm")
 (load "config-helm")
 (load "config-mu4e")
 (load "hook-screen-change")
