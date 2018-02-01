@@ -1,7 +1,5 @@
 (require 'mu4e)
 
-
-
 (setq mu4e-maildir "/home/tuedachu/.cache/mail")
 (setq mu4e-get-mail-command "mbsync -a")
 
@@ -78,7 +76,7 @@
 		    (smtpmail-smtp-service . 465)
 		    (smtpmail-stream-type . ssl)))
 	 ,(make-mu4e-context
-	   :name "work"
+	   :name "tuedachu"
 	   :match-func (lambda (msg)
 			 (when msg
 			   (mu4e-message-contact-field-matches msg
@@ -107,14 +105,5 @@
 		    (smtpmail-smtp-server .  "smtp.office365.com")
 		    (smtpmail-smtp-service . 587)))))
 
-;; set `mu4e-context-policy` and `mu4e-compose-policy` to tweak when mu4e should
-;; guess or ask the correct context, e.g.
 
-;; start with the first (default) context;
-;; default is to ask-if-none (ask when there's no context yet, and none match)
-;; (setq mu4e-context-policy 'pick-first)
-
-;; compose with the current context is no context matches;
-;; default is to ask
-;; (setq mu4e-compose-context-policy nil)
-
+(global-set-key (kbd "s-s") 'helm-mu)
