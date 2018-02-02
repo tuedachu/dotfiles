@@ -64,3 +64,7 @@
 
 
 (setq make-backup-files nil)
+
+(require 'undo-tree)
+(global-undo-tree-mode)
+
