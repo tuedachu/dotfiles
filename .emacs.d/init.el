@@ -62,3 +62,5 @@
 (setq browse-url-generic-program (executable-find "qutebrowser"))
 (setq browse-url-browser-function 'browse-url-generic)
 
+
+(setq make-backup-files nil)
