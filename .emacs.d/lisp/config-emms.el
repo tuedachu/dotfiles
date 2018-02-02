@@ -8,4 +8,4 @@
 (setq emms-source-file-default-directory "~/music")
 (add-to-list 'emms-player-mpv-parameters "--no-audio-display")
 
-
+(provide 'config-emms)

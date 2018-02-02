@@ -15,8 +15,8 @@
 (load "config-exwm")
 (load "config-helm")
 (load "config-mu4e")
-(load "config-emms")
 
+(with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 
 (setq custom-file "/tmp/emacs-custom-file.el")
