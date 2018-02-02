@@ -36,12 +36,16 @@
 ;Org files used for the agenda 
 (setq org-agenda-files '("~/perso/notes.org"))
 
+;; TODO: move eshell config into a separate file
 (load "patch-eshell")
 (with-eval-after-load 'em-term
   (add-to-list 'eshell-visual-commands "htop")
   (add-to-list 'eshell-visual-commands "watch")
   (add-to-list 'eshell-visual-commands "gtypist")
   (add-to-list 'eshell-visual-commands "ncdu"))
+
+(setq eshell-kill-processes-on-exit t)
+
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
