@@ -5,6 +5,9 @@
 
 (setq mu4e-hide-index-messages t)
 
+
+(setq mu4e-change-filenames-when-moving t)
+
 (setq mu4e-drafts-folder
       (lambda (msg)
         (cond
@@ -20,11 +23,11 @@
         (cond
          ((or (and msg
 		   (string-prefix-p "/perso/" (mu4e-message-field msg :maildir)))
-	      (string= user-mail-address "arnaud.hoffmann90@gmail.com")) "/perso/[Gmail]/.Sent")
+	      (string= user-mail-address "arnaud.hoffmann90@gmail.com")) "/perso/[Gmail]/.Sent Mail")
 	 ((or (and msg
 		   (string-prefix-p "/PZ/" (mu4e-message-field msg :maildir)))
 	      (string= user-mail-address "arnaud@petrostreamz.com")) "/PZ/&AMk-l&AOk-ments envoy&AOk-s")
-         (t "/tuedachu/[Gmail]/.Sent")))
+         (t "/tuedachu/[Gmail]/.Sent Mail")))
       mu4e-trash-folder
       (lambda (msg)
 	(cond
@@ -32,7 +35,7 @@
 	  "/perso/[Gmail]/.Trash")
 	 ((string-prefix-p "/PZ/" (mu4e-message-field msg :maildir))
 	  "/PZ/&AMk-l&AOk-ments supprim&AOk-s")
-	 "/tuedachu/[Gmail]/.Trash")))
+	 (t "/tuedachu/[Gmail]/.Trash"))))
 
 (setq mu4e-update-interval 120)
 
@@ -121,3 +124,18 @@
 
 
 (global-set-key (kbd "s-s") 'helm-mu)
+
+
+(defun tuedachu-mu4e-headers-move-to-trash ()
+  (interactive)
+  (mu4e-mark-set 'move (funcall mu4e-trash-folder (mu4e-message-at-point)))
+  (mu4e-headers-next))
+
+(defun tuedachu-mu4e-view-move-to-trash ()
+  (interactive)
+  (mu4e~view-in-headers-context
+  (mu4e-mark-set 'move (funcall mu4e-trash-folder (mu4e-message-at-point)))
+   (mu4e-headers-next)))
+
+(define-key mu4e-view-mode-map (kbd "d") 'tuedachu-mu4e-view-move-to-trash)
+(define-key mu4e-headers-mode-map (kbd "d") 'tuedachu-mu4e-headers-move-to-trash)
