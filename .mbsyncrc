@@ -1,0 +1,140 @@
+## Gmail-specitic notes:
+##
+## INBOX and Sent mails are symlinked to All Mails on the remote by default.
+##
+## Gmail seems to force the use of the Sent folder _and_ All Mail.  Thus we
+## don't want to sync All Mail or else we will have duplicates of all INBOX
+## e-mails.
+##
+## => So we sync INBOX and Sent but we skip All Mail.
+##
+## The regular move/delete operations cannot be performed without leaving copies
+## behind in All Mail.  Gmail has the "auto-expunge" option: if on, then move
+## operations on the server will be performed on both the original and the copy.
+## (Note that this "feature" has nothing to do with expunging.)
+##
+## => Leave auto-expunge on despite mbsync(1)'s warning.
+##
+## IMAP's expunge does not work well on the remote: the INBOX/Sent e-mail will
+## be remove, but the All Mail copy will remain.
+##
+## => Do not use IMAP's expunge ("delete" in mu4e) on INBOX/Sent e-mail: move
+## them to the trash instead.  (Set Expunge=None.)
+##
+## mbsync can only send an IMAP's move to the server if the move is performed
+## across folder of the same channel.  (TODO: Verify this claim.)
+##
+## => Add Gmail's trash folder to the same channel as INBOX and Sent.
+##
+## To delete e-mails from Gmail's trash, we need to expunge them.  Gmail ignores
+## the delete flag in the Trash folder.  When trashing from the webmail, the
+## delete flag is _not_ set on the trashed mail.
+##
+## => Add a trash-dedicated channel with Expunge=Both.
+
+IMAPAccount tuedachu
+Host imap.gmail.com
+User tuedachu@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/login tuedachu@gmail.com/ {print $NF; exit}'"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+## TODO: Workaround for disconnection...
+#PipelineDepth 50
+
+IMAPStore tuedachu-remote
+Account tuedachu
+
+MaildirStore tuedachu-local
+# The trailing "/" is important
+Path ~/.cache/mail/tuedachu/
+Inbox ~/.cache/mail/tuedachu/INBOX
+SubFolders Legacy
+
+Channel tuedachu-all
+Master :tuedachu-remote:
+Slave :tuedachu-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Trash"
+Create Both
+Expunge Both
+SyncState *
+
+## Channel tuedachu-trash
+## Master :tuedachu-remote:
+## Slave :tuedachu-local:
+## Patterns "[Gmail]/Trash"
+## Create Both
+## Expunge Slave
+## SyncState *
+
+
+
+IMAPAccount perso
+Host imap.gmail.com
+User arnaud.hoffmann90@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/login arnaud.hoffmann90@gmail.com/ {print $NF; exit}'"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+## TODO: Workaround for disconnection...
+#PipelineDepth 50
+
+IMAPStore perso-remote
+Account perso
+
+MaildirStore perso-local
+# The trailing "/" is important
+Path ~/.cache/mail/perso/
+Inbox ~/.cache/mail/perso/INBOX
+SubFolders Legacy
+
+Channel perso-all
+Master :perso-remote:
+Slave :perso-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Trash" 
+Create Both
+Expunge Both
+SyncState *
+
+## Channel perso-trash
+## Master :perso-remote:
+## Slave :perso-local:
+## Patterns "[Gmail]/Trash"
+## Create Both
+## Expunge Slave
+## SyncState *
+
+
+
+IMAPAccount PZ
+Host outlook.office365.com
+User arnaud@petrostreamz.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/login arnaud@petrostreamz.com/ {print $NF; exit}'"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+## TODO: Workaround for disconnection...
+#PipelineDepth 50
+
+IMAPStore PZ-remote
+Account PZ
+
+MaildirStore PZ-local
+# The trailing "/" is important
+Path ~/.cache/mail/PZ/
+Inbox ~/.cache/mail/PZ/INBOX
+SubFolders Legacy
+
+Channel PZ-all
+Master :PZ-remote:
+Slave :PZ-local:
+Patterns "&AMk-l&AOk-ments envoy&AOk-s" "&AMk-l&AOk-ments supprim&AOk-s" "INBOX"
+Create Both
+Expunge None
+SyncState *
+
+Channel PZ-trash
+Master :PZ-remote:
+Slave :PZ-local:
+Patterns "Trash"
+Create Both
+Expunge Slave
+SyncState *
+
