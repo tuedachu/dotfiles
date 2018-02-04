@@ -18,6 +18,7 @@
 
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
+(with-eval-after-load 'go-mode (require 'config-go-mode))
 
 (setq custom-file "/tmp/emacs-custom-file.el")
 
