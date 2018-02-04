@@ -23,7 +23,7 @@
 
 (setq helm-source-names-using-follow '("All Eshell prompts" "Regexp Builder" "Variables" "Imenu" "Occur"))
 
-(setq package-selected-packages '(pdf-tools undo-tree lua-mode markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm))
+(setq package-selected-packages '(helm-company company-go company go-eldoc pdf-tools undo-tree lua-mode markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm))
 
 (set-face-attribute 'default nil :foreground "white" :background "black")
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono")) 
