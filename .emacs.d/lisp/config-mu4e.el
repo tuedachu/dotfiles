@@ -126,6 +126,8 @@
 (global-set-key (kbd "s-s") 'helm-mu)
 
 
+;; TODO: Flag the mail read after being delted
+;; set mark 'read', call 'x' and then 'move to trash' again
 (defun tuedachu-mu4e-headers-move-to-trash ()
   (interactive)
   (mu4e-mark-set 'move (funcall mu4e-trash-folder (mu4e-message-at-point)))
@@ -133,9 +135,9 @@
 
 (defun tuedachu-mu4e-view-move-to-trash ()
   (interactive)
-  (mu4e~view-in-headers-context
+  (mu4e~view-quit-buffer)
   (mu4e-mark-set 'move (funcall mu4e-trash-folder (mu4e-message-at-point)))
-   (mu4e-headers-next)))
+  (mu4e-headers-next))
 
 (define-key mu4e-view-mode-map (kbd "d") 'tuedachu-mu4e-view-move-to-trash)
 (define-key mu4e-headers-mode-map (kbd "d") 'tuedachu-mu4e-headers-move-to-trash)
