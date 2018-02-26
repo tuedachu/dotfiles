@@ -1,10 +1,10 @@
 (require 'mu4e)
+(require 'smtpmail)
 
 (setq mu4e-maildir "/home/tuedachu/.cache/mail")
 (setq mu4e-get-mail-command "mbsync -a")
 
 (setq mu4e-hide-index-messages t)
-
 
 (setq mu4e-change-filenames-when-moving t)
 
@@ -14,9 +14,6 @@
          ((or (and msg
 		   (string-prefix-p "/perso/" (mu4e-message-field msg :maildir)))
 	      (string= user-mail-address "arnaud.hoffmann90@gmail.com")) "/perso/[Gmail]/.Drafts")
-	 ((or (and msg
-		   (string-prefix-p "/PZ/" (mu4e-message-field msg :maildir)))
-	      (string= user-mail-address "arnaud@petrostreamz.com")) "/PZ/Brouillons")
          (t "/tuedachu/[Gmail]/.Drafts")))
       mu4e-sent-folder
       (lambda (msg)
@@ -24,17 +21,12 @@
          ((or (and msg
 		   (string-prefix-p "/perso/" (mu4e-message-field msg :maildir)))
 	      (string= user-mail-address "arnaud.hoffmann90@gmail.com")) "/perso/[Gmail]/.Sent Mail")
-	 ((or (and msg
-		   (string-prefix-p "/PZ/" (mu4e-message-field msg :maildir)))
-	      (string= user-mail-address "arnaud@petrostreamz.com")) "/PZ/&AMk-l&AOk-ments envoy&AOk-s")
          (t "/tuedachu/[Gmail]/.Sent Mail")))
       mu4e-trash-folder
       (lambda (msg)
 	(cond
 	 ((string-prefix-p "/perso/" (mu4e-message-field msg :maildir))
 	  "/perso/[Gmail]/.Trash")
-	 ((string-prefix-p "/PZ/" (mu4e-message-field msg :maildir))
-	  "/PZ/&AMk-l&AOk-ments supprim&AOk-s")
 	 (t "/tuedachu/[Gmail]/.Trash"))))
 
 (setq mu4e-update-interval 120)
@@ -57,12 +49,10 @@
 
 ;; Don't include myself in the reply
 (setq mu4e-compose-dont-reply-to-self t)
-(add-to-list 'mu4e-user-mail-address-list "tuedachu@gmail.com")
 
 (setq mu4e-view-show-addresses t)
 
 (setq send-mail-function 'smtpmail-send-it)
-
 
 ;; Context
 (setq mu4e-contexts
@@ -72,9 +62,9 @@
 			 (when msg
 			   (mu4e-message-contact-field-matches msg
 							       '(:from :to) "arnaud.hoffmann90@gmail.com")))
-	   :vars '( ( user-mail-address	    . "arnaud.hoffmann90@gmail.com"  )
-		    ( user-full-name	    . "Arnaud Hoffmann" )
-		    ( mu4e-compose-signature . "Arnaud")
+	   :vars '( (user-mail-address	    . "arnaud.hoffmann90@gmail.com"  )
+		    (user-full-name	    . "Arnaud Hoffmann" )
+		    (mu4e-compose-signature . "Arnaud")
 		    (smtpmail-smtp-server .  "smtp.gmail.com")
 		    (smtpmail-smtp-service . 465)
 		    (smtpmail-stream-type . ssl)))
@@ -84,30 +74,15 @@
 			 (when msg
 			   (mu4e-message-contact-field-matches msg
 							       '(:from :to) "tuedachu@gmail.com")))
-	   :vars '( ( user-mail-address	     . "tuedachu@gmail.com" )
-		    ( user-full-name	     . "Arnaud Hoffmann" )
-		    ( mu4e-compose-signature  .
+	   :vars '((user-mail-address	     . "tuedachu@gmail.com" )
+		    (user-full-name	     . "Arnaud Hoffmann" )
+		    (mu4e-compose-signature  .
 					      (concat
 					       "Arnaud Hoffmann\n"
 					       "aka tuedachu\n"))
 		    (smtpmail-smtp-server .  "smtp.gmail.com")
 		    (smtpmail-smtp-service . 465)
-		    (smtpmail-stream-type . ssl)))
-	 ,(make-mu4e-context
-	   :name "PZ"
-	   :match-func (lambda (msg)
-			 (when msg
-			   (mu4e-message-contact-field-matches msg
-							       '(:from :to) "arnaud@petrostreamz.com")))
-	   :vars '( ( user-mail-address	     . "arnaud@petrostreamz.com" )
-		    ( user-full-name	     . "Arnaud Hoffmann" )
-		    ( mu4e-compose-signature  .
-					      (concat
-					       "Arnaud Hoffmann\n"
-					       "Senior Petroleum Engineer\n"))
-		    (smtpmail-smtp-server .  "smtp.office365.com")
-		    (smtpmail-smtp-service . 587)))))
-
+		    (smtpmail-stream-type . ssl)))))
 
 
 ;;; This sets `mu4e-user-mail-address-list' to the concatenation of all
