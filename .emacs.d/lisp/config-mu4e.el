@@ -62,11 +62,12 @@
 			 (when msg
 			   (mu4e-message-contact-field-matches msg
 							       '(:from :to) "arnaud.hoffmann90@gmail.com")))
-	   :vars '( (user-mail-address	    . "arnaud.hoffmann90@gmail.com"  )
+	   :vars '((user-mail-address	    . "arnaud.hoffmann90@gmail.com"  )
 		    (user-full-name	    . "Arnaud Hoffmann" )
 		    (mu4e-compose-signature . "Arnaud")
 		    (smtpmail-smtp-server .  "smtp.gmail.com")
 		    (smtpmail-smtp-service . 465)
+		    (smtpmail-smtp-user    . "arnaud.hoffmann90@gmail.com")
 		    (smtpmail-stream-type . ssl)))
 	 ,(make-mu4e-context
 	   :name "tuedachu"
@@ -82,6 +83,7 @@
 					       "aka tuedachu\n"))
 		    (smtpmail-smtp-server .  "smtp.gmail.com")
 		    (smtpmail-smtp-service . 465)
+		    (smtpmail-smtp-user    . "tuedachu@gmail.com")
 		    (smtpmail-stream-type . ssl)))))
 
 
