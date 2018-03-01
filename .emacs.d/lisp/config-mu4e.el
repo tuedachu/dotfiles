@@ -8,6 +8,17 @@
 
 (setq mu4e-change-filenames-when-moving t)
 
+(setq mu4e-headers-fields '((:human-date . 16)
+			    (:flags . 6)
+			    (:size  . 6)
+			    (:from  . 22)
+			    (:subject)))
+
+(setq mu4e-headers-date-format "%F %R")
+(setq mu4e-headers-time-format "%R")
+
+(setq mu4e-headers-include-related t)
+
 (setq mu4e-drafts-folder
       (lambda (msg)
         (cond
