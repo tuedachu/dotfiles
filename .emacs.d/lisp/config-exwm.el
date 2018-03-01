@@ -72,3 +72,6 @@
 (exwm-input-set-key (kbd "s--") (lambda ()
 				  (interactive)
 				  (call-process "amixer" nil nil nil "set" "Master" "5%-")))
+
+;; magit
+(exwm-input-set-key (kbd "s-m") 'magit-status)
