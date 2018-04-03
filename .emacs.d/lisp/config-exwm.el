@@ -49,6 +49,10 @@
 		      (interactive (list (read-shell-command "$ ")))
 		      (start-process-shell-command command nil command)))
 
+(exwm-input-set-key (kbd "s-q") (lambda ()
+				  (interactive)
+				  (start-process-shell-command "qutebrowser" nil "qutebrowser")))
+
 ;; 's-b' : Change buffer (C-x b)
 (exwm-input-set-key (kbd "s-b") 'helm-mini)
 
