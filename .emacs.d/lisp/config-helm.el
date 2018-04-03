@@ -34,7 +34,9 @@
 (global-set-key (kbd "M-s f") 'helm-semantic-or-imenu)
 (global-set-key (kbd "M-s o") 'helm-occur)
 
-(global-set-key (kbd "s-c") 'helm-resume)
+;;(global-set-key (kbd "s-c") 'helm-resume)
+
+;;(global-set-key (kbd "s-p") 'helm-pass)
 
 (global-set-key (kbd "C-h a") 'helm-apropos)
 (setq helm-follow-mode-persistent t)
