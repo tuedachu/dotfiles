@@ -10,5 +10,5 @@ Top level forms are evaluated with `eval-defun' so that `defvar'
       (forward-sexp)
       (eval-defun nil))))
 
-(define-key emacs-lisp-mode-map (kbd "C-M-x") 'tuedachu/eval-buffer)
+(define-key emacs-lisp-mode-map (kbd "<f12>") 'tuedachu/eval-buffer)
 
