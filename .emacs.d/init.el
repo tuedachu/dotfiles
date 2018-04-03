@@ -17,6 +17,8 @@
 (load "config-mu4e")
 (load "config-elisp-mode")
 
+(add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
+(load "config-phz")
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
