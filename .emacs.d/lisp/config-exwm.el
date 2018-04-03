@@ -58,6 +58,11 @@
 ;; C-x k : Kill this buffer
 (exwm-input-set-key (kbd "C-x k") 'kill-this-buffer)
 
+(exwm-input-set-key (kbd "s-p") 'helm-pass)
+
+(exwm-input-set-key (kbd "s-c") 'helm-resume)
+
+
 ;; 's-r': Reset
 (exwm-input-set-key (kbd "s-r") #'exwm-reset)
 
