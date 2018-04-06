@@ -37,6 +37,9 @@
 ;; comment line
 (global-set-key (kbd "M-;") 'comment-line)
 
+;; Bind menu to nothing
+(global-set-key (kbd "<menu>") nil)
+
 ;Org files used for the agenda 
 (setq org-agenda-files '("~/perso/notes.org"))
 
