@@ -12,3 +12,8 @@ Top level forms are evaluated with `eval-defun' so that `defvar'
 
 (define-key emacs-lisp-mode-map (kbd "<f12>") 'tuedachu/eval-buffer)
 
+(defun tuedachu/indent()
+  (indent-region (point-min) (point-max)))
+
+(add-hook 'before-save-hook #'tuedachu/indent)
+
