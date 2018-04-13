@@ -1,3 +1,7 @@
+(require 'ws-butler)
+
+(add-hook 'emacs-lisp-mode-hook #'ws-butler-mode)
+(setq require-final-newline t)
 
 (defun tuedachu/eval-buffer()
   "Execute the current buffer as Lisp code.
