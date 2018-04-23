@@ -20,4 +20,3 @@ Top level forms are evaluated with `eval-defun' so that `defvar'
   (indent-region (point-min) (point-max)))
 
 (add-hook 'before-save-hook #'tuedachu/indent)
-
