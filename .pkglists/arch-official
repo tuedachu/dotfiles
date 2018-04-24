@@ -19,7 +19,6 @@ chromaprint
 coreutils
 cryptsetup
 dash
-demlo
 device-mapper
 dhcpcd
 dialog
@@ -56,7 +55,6 @@ gzip
 htop
 ifplugd
 inetutils
-inxi
 iproute2
 iputils
 isync
