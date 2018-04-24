@@ -3,7 +3,9 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
-;; start early.  
+(setq package-selected-packages '(ws-butler web-mode company-tern tern js2-mode helm-pass helm-company company-go company go-eldoc pdf-tools undo-tree lua-mode markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm))
+
+;; start early.
 (pinentry-start)
 
 (setq user-full-name "Arnaud Hoffmann")
@@ -17,8 +19,6 @@
 (load "config-mu4e")
 (load "config-elisp-mode")
 
-(add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
-(load "config-phz")
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
@@ -36,8 +36,6 @@
 
 (setq helm-source-names-using-follow '("All Eshell prompts" "Regexp Builder" "Variables" "Imenu" "Occur"))
 
-(setq package-selected-packages '(ws-butler web-mode company-tern tern js2-mode helm-pass helm-company company-go company go-eldoc pdf-tools undo-tree lua-mode markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm))
-
 (set-face-attribute 'default nil :foreground "white" :background "black")
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono")) 
 
@@ -49,7 +47,7 @@
 ;; Bind menu to nothing
 (global-set-key (kbd "<menu>") nil)
 
-;Org files used for the agenda 
+;; Org files used for the agenda
 (setq org-agenda-files '("~/perso/notes.org"))
 
 ;; TODO: move eshell config into a separate file
@@ -89,3 +87,9 @@
 (global-undo-tree-mode)
 
 
+(add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
+(load "config-phz")
+
+;; Prevent to split vertically the window
+(setq split-height-threshold nil)
+(setq split-width-threshold 100)
