@@ -10,20 +10,20 @@ pacman_list=""
 if [ -f ~/.pkglists/arch-official ]; then
     pacman_list="$(cat ~/.pkglists/arch-official)"
 fi
-# sudo pacman --noconfirm -S --needed base base-devel $pacman_list
+sudo pacman --noconfirm -S --needed base base-devel $pacman_list
 
 echo " :: Removing orphans"
 pacman_list=$(pacman -Qdtq)
 if [ -n "$pacman_list" ]; then
-    #    sudo pacman --noconfirm -Rs "$pacman_list"
+    sudo pacman --noconfirm -Rs "$pacman_list"
 fi
 
 echo "==> 'temp' folder"
-# mkdir -pv "$HOME/temp"
+mkdir -pv "$HOME/temp"
 
 echo "==> 'projects' folder"
-# mkdir -pv "$HOME/projects"
+mkdir -pv "$HOME/projects"
 
 echo "==> emacs ELPA packages"
-# yes | emacs --batch -l ~/.emacs.d/init.el --eval '(progn (package-refresh-contents) (package-install-selected-packages))'
+yes | emacs --batch -l ~/.emacs.d/init.el --eval '(progn (package-refresh-contents) (package-install-selected-packages))'
 
