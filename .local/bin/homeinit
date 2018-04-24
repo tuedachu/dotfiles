@@ -25,5 +25,5 @@ echo "==> 'projects' folder"
 mkdir -pv "$HOME/projects"
 
 echo "==> emacs ELPA packages"
-yes | emacs --batch -l ~/.emacs.d/init.el --eval '(progn (package-refresh-contents) (package-install-selected-packages))'
+yes | emacs --batch -l ~/.emacs.d/first-installation.el
 
