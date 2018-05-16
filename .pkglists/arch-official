@@ -25,6 +25,7 @@ dialog
 diffutils
 dzen2
 e2fsprogs
+ed
 emacs
 emms
 expac
@@ -106,6 +107,7 @@ s-nail
 sed
 shadow
 slock
+subdl
 sudo
 sxiv
 sysfsutils
