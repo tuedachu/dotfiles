@@ -14,6 +14,8 @@ msg() #Print argument in color declared in argument 2
 msg "===  homeinit  ====" $RED
 msg "Initialization of home folder" $BOLD
 
+msg "==> System packages", $GREEN
+msg " :: Installing all official packages", $BOLD
 pacman_list=""
 if [ -f ~/.pkglists/arch-official ]; then
     pacman_list="$(cat ~/.pkglists/arch-official)"
