@@ -31,3 +31,13 @@ mkdir -pv "$HOME/projects"
 echo -e "${GREEN}==> Install emacs packages"
 yes | emacs --batch -l ~/.emacs.d/first-installation.el
 
+echo -e "${GREEN}==> Go"
+echo -e "${NORMAL} :: Creating go folder"
+mkdir -pv "$HOME/projects/go"
+echo -e "${NORMAL} :: Go path"
+export GOPATH="$HOME/projects/go"
+export PATH="$PATH:$GOPATH/bin"
+echo -e "${NORMAL} :: Install go tools"
+go get github.com/nsf/gocode
+go get github.com/rogpeppe/godef
+go get github.com/eugeii/goimports
