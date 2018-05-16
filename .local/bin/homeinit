@@ -41,3 +41,18 @@ echo -e "${NORMAL} :: Install go tools"
 go get github.com/nsf/gocode
 go get github.com/rogpeppe/godef
 go get github.com/eugeii/goimports
+
+echo -e "${GREEN}==> Emails"
+echo -e "${NORMAL} :: Creating folders"
+mkdir -pv "$HOME/.cache/mail/perso"
+mkdir -pv "$HOME/.cache/mail/tuedachu"
+
+echo -e -n "${NORMAL}Do you want to synchronize all emails? (y/N) "
+read sync
+sync=$(echo "$sync" | awk '{print tolower($0)}')
+if [ "$sync" = "y" ]
+then
+    echo -e "${NORMAL} :: Synchronizing emails"
+    mbsync -a
+    mu index -m "$HOME/.cache/mail"
+fi
