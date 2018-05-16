@@ -21,6 +21,12 @@ msg "==> Install prerequisites" $GREEN
 sudo pacman --noconfirm -S openssh stow git
 eval $(ssh-agent)
 
+msg "==> Change permission of ssh and gnupg" $GREEN
+sudo chmod 600 ~/.gnupg/*
+sudo chmod 700 ~/.gnupg
+sudo chmod 600 ~/.ssh/*
+sudo chmod 700 ~/.shh
+
 msg "==> Dotfiles" $GREEN
 cd "$HOME"
 msg " :: Cloning dotfiles" $BOLD
