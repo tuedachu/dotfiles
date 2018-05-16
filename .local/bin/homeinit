@@ -11,54 +11,51 @@ msg() #Print argument in color declared in argument 2
     echo -e $2 $1
 }
 
-echo -e "${GREEN}== homeinit  =="
-echo -e "${NORMAL}Initialization of home folder"
+msg "===  homeinit  ====" $RED
+msg "Initialization of home folder" $BOLD
 
-echo -e "${GREEN}==> System packages"
-echo -e "${NORMAL} :: Installing all official packages"
 pacman_list=""
 if [ -f ~/.pkglists/arch-official ]; then
     pacman_list="$(cat ~/.pkglists/arch-official)"
 fi
 sudo pacman --noconfirm -S --needed base base-devel $pacman_list
 
-echo -e "${NORMAL} :: Removing orphans"
+msg " :: Removing orphans", $BOLD
 pacman_list=$(pacman -Qdtq)
 if [ -n "$pacman_list" ]; then
     sudo pacman --noconfirm -Rs "$pacman_list"
 fi
 
-echo -e "${GREEN}==> Create 'temp' folder"
+msg "==> Create folders", $GREEN
 mkdir -pv "$HOME/temp"
-
-echo -e "${GREEN}==> Create 'projects' folder"
 mkdir -pv "$HOME/projects"
+mkdir -pv "$HOME/perso"
 
-echo -e "${GREEN}==> Install emacs packages"
+msg "==> Install emacs packages", $GREEN
 yes | emacs --batch -l ~/.emacs.d/first-installation.el
 
-echo -e "${GREEN}==> Go"
-echo -e "${NORMAL} :: Creating go folder"
+msg "==> Go", $GREEN
+msg " :: Creating go folder", $BOLD
 mkdir -pv "$HOME/projects/go"
-echo -e "${NORMAL} :: Go path"
+msg " :: Go path", $BOLD
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:$GOPATH/bin"
-echo -e "${NORMAL} :: Install go tools"
+msg " :: Install go tools", $BOLD
 go get github.com/nsf/gocode
 go get github.com/rogpeppe/godef
 go get github.com/eugeii/goimports
 
-echo -e "${GREEN}==> Emails"
-echo -e "${NORMAL} :: Creating folders"
+msg "==> Emails", $GREEN
+msg " :: Creating folders", $BOLD
 mkdir -pv "$HOME/.cache/mail/perso"
 mkdir -pv "$HOME/.cache/mail/tuedachu"
 
-echo -e -n "${NORMAL}Do you want to synchronize all emails? (y/N) "
+msg "Do you want to synchronize all emails? (y/N) " $NORMAL
 read sync
 sync=$(echo "$sync" | awk '{print tolower($0)}')
 if [ "$sync" = "y" ]
 then
-    echo -e "${NORMAL} :: Synchronizing emails"
+    msg " :: Synchronizing emails", $BOLD
     mbsync -a
     mu index -m "$HOME/.cache/mail"
 fi
