@@ -18,7 +18,7 @@ msg "===  homeinit  ====" $RED
 msg "Initialization of machine configuration" $BOLD
 
 msg "==> Install prerequisites" $GREEN
-sudo pacman --noconfirm -S openssh stow
+sudo pacman --noconfirm -S openssh stow git
 eval $(ssh-agent)
 
 msg "==> Dotfiles" $GREEN
