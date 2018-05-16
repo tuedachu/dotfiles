@@ -12,7 +12,8 @@ msg() #Print argument in color declared in argument 2
 }
 
 msg "===  homeinit  ====" $RED
-msg "Initialization of home folder" $BOLD
+msg "Initialization of machine configuration" $BOLD
+
 
 msg "==> System packages", $GREEN
 msg " :: Installing all official packages", $BOLD
