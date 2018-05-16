@@ -1,6 +1,9 @@
 #!/bin/sh
 ## homeinit
 
+## TODO:
+## 1) Add support for bookmarks and quickmarks
+
 RED='\033[0;31m\033[1m'
 GREEN='\033[0;32m\033[1m'
 BOLD='\033[0m\033[1m'
