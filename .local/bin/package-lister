@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pacman -Qneq | LC_ALL=C sort >"$HOME/.pkglists/arch-official"
+pacman -Qmeq | LC_ALL=C sort >"$HOME/.pkglists/arch-aur"
