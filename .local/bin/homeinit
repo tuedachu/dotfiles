@@ -14,6 +14,28 @@ msg() #Print argument in color declared in argument 2
 msg "===  homeinit  ====" $RED
 msg "Initialization of machine configuration" $BOLD
 
+msg "==> Install prerequisites" $GREEN
+sudo pacman --noconfirm -S openssh stow
+eval $(ssh-agent)
+
+msg "==> Dotfiles" $GREEN
+cd "$HOME"
+msg " :: Cloning dotfiles" $BOLD
+git clone git@github.com:tuedachu/dotfiles.git
+msg " :: Create symbolic links" $BOLD
+cd dotfiles
+stow .
+cd "$HOME"
+
+msg "==> Gitlab" $GREEN
+msg " :: Password-store" $BOLD
+mkdir "$HOME/.password-store"
+git clone git@gitlab.com:tuedachu/pswd.git .password-store
+msg " :: Mail files" $BOLD
+git clone git@gitlab.com:tuedachu/mail.git
+cd mail
+stow .
+cd "$HOME"
 
 msg "==> System packages", $GREEN
 msg " :: Installing all official packages", $BOLD
