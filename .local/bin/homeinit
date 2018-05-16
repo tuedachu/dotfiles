@@ -1,29 +1,33 @@
 #!/bin/sh
 ## homeinit
 
-echo -e "\033[1m== homeinit  =="
-echo -e "\033[1mInitialization of home folder"
+GREEN='\033[0;32m\033[1m'
+NORMAL='\033[0m\033[1m'
 
-echo -e "\033[0;32\033[1m==> System packages"
-echo -e "\033[1m :: Installing all official packages"
+
+echo -e "${GREEN}== homeinit  =="
+echo -e "${NORMAL}Initialization of home folder"
+
+echo -e "${GREEN}==> System packages"
+echo -e "${NORMAL} :: Installing all official packages"
 pacman_list=""
 if [ -f ~/.pkglists/arch-official ]; then
     pacman_list="$(cat ~/.pkglists/arch-official)"
 fi
 sudo pacman --noconfirm -S --needed base base-devel $pacman_list
 
-echo -e "\033[1m :: Removing orphans"
+echo -e "${NORMAL} :: Removing orphans"
 pacman_list=$(pacman -Qdtq)
 if [ -n "$pacman_list" ]; then
     sudo pacman --noconfirm -Rs "$pacman_list"
 fi
 
-echo -e "\033[0;32\033[1m==> 'temp' folder"
+echo -e "${GREEN}==> Create 'temp' folder"
 mkdir -pv "$HOME/temp"
 
-echo -e "\033[0;32\033[1m==> 'projects' folder"
+echo -e "${GREEN}==> Create 'projects' folder"
 mkdir -pv "$HOME/projects"
 
-echo -e "\033[0;32\033[1m==> emacs ELPA packages"
+echo -e "${GREEN}==> Install emacs packages"
 yes | emacs --batch -l ~/.emacs.d/first-installation.el
 
