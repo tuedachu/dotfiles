@@ -110,3 +110,9 @@
 ;; Prevent to split vertically the window
 (setq split-height-threshold nil)
 (setq split-width-threshold 100)
+
+(require 'transfer-sh)
+
+(setq magit-diff-refine-hunk 'all)
+(put 'erase-buffer 'disabled nil)
+(put 'emms-browser-delete-files 'disabled nil)
