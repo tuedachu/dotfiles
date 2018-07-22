@@ -65,7 +65,7 @@
 (global-set-key (kbd "<menu>") nil)
 
 ;; Org files used for the agenda
-(setq org-agenda-files '("~/perso/notes.org"))
+(setq org-agenda-files '("~/perso/todo.org"))
 
 ;; TODO: move eshell config into a separate file
 (load "patch-eshell")
