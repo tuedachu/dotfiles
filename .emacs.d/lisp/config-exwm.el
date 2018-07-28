@@ -24,7 +24,7 @@
 (add-hook 'exwm-randr-screen-change-hook 'tuedachu-change-screen-hook)
 (exwm-randr-enable)
 
-; Start a new eshell with Super + <Return> 
+					; Start a new eshell with Super + <Return>
 (exwm-input-set-key (kbd "<s-return>") 'eshell)
 
 ;; Slock
@@ -57,7 +57,7 @@
 (exwm-input-set-key (kbd "s-b") 'helm-mini)
 
 ;; 's-f : Open file  (C-x C-f)
-(exwm-input-set-key (kbd "s-f") 'helm-find-files)
+(exwm-input-set-key (kbd "s-f") 'helm-locate)
 
 ;; C-x k : Kill this buffer
 (exwm-input-set-key (kbd "C-x k") 'kill-this-buffer)
