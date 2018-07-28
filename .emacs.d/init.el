@@ -3,6 +3,23 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
+;;; FROM ambrevar init.el
+;;; Site Lisp folder for local packages and development.
+;; We need to roll it out manually since we want it first in the `load-path',
+;; while `normal-top-level-add-subdirs-to-load-path' appends it to the very end.
+(defun ambrevar/package-refresh-load-path (path)
+  "Add every non-hidden sub-folder of PATH to `load-path'."
+  (when (file-directory-p path)
+    (dolist (dir (directory-files path t "^[^\\.]"))
+      (when (file-directory-p dir)
+        (setq load-path (add-to-list 'load-path dir))
+        (dolist (subdir (directory-files dir t "^[^\\.]"))
+          (when (file-directory-p subdir)
+            (setq load-path (add-to-list 'load-path subdir))))))))
+(let ((site-lisp (expand-file-name "site-lisp/" "~/.emacs.d/")))
+  (add-to-list 'load-path site-lisp)
+  (ambrevar/package-refresh-load-path site-lisp))
+
 (setq package-selected-packages '(ws-butler web-mode company-tern tern js2-mode helm-pass helm-company company-go company go-eldoc pdf-tools undo-tree lua-mode markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm))
 
 ;; start early.
@@ -37,7 +54,7 @@
 (setq helm-source-names-using-follow '("All Eshell prompts" "Regexp Builder" "Variables" "Imenu" "Occur"))
 
 (set-face-attribute 'default nil :foreground "white" :background "black")
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono")) 
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono"))
 
 ;; Unbind <C-z>
 (global-set-key (kbd "C-z") nil)
@@ -48,7 +65,7 @@
 (global-set-key (kbd "<menu>") nil)
 
 ;; Org files used for the agenda
-(setq org-agenda-files '("~/perso/notes.org"))
+(setq org-agenda-files '("~/perso/todo.org"))
 
 ;; TODO: move eshell config into a separate file
 (load "patch-eshell")
@@ -96,3 +113,8 @@
 
 (if (file-exists-p "lisp/myYoga-config.el")
     (load "myYoga-config.el"))
+(require 'transfer-sh)
+
+(setq magit-diff-refine-hunk 'all)
+(put 'erase-buffer 'disabled nil)
+(put 'emms-browser-delete-files 'disabled nil)

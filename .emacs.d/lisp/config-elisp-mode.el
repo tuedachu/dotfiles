@@ -1,7 +1,10 @@
 (require 'ws-butler)
-
 (add-hook 'emacs-lisp-mode-hook #'ws-butler-mode)
+(add-hook 'emacs-lisp-mode-hook #'tuedachu/disable-tab-indentation)
 (setq require-final-newline t)
+
+(defun tuedachu/disable-tab-indentation()
+  (setq indent-tabs-mode nil))
 
 (defun tuedachu/eval-buffer()
   "Execute the current buffer as Lisp code.
