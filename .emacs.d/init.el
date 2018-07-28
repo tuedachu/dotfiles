@@ -87,9 +87,12 @@
 (global-undo-tree-mode)
 
 
-(add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
-(load "config-phz")
+;; (add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
+;; (load "config-phz")
 
 ;; Prevent to split vertically the window
 (setq split-height-threshold nil)
 (setq split-width-threshold 100)
+
+(if (file-exists-p "lisp/myYoga-config.el")
+    (load "myYoga-config.el"))
