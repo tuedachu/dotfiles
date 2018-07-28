@@ -11,17 +11,17 @@ NORMAL='\033[0m'
 
 msg() #Print argument in color declared in argument 2
 {
-    echo -e $2 $1
+    echo -e $2 $1 $NORMAL
 }
 
 msg "===  homeinit  ====" $RED
-msg "Initialization of machine configuration" $BOLD
+msg "Initialization of machine configuration\n" $BOLD
 
 msg "==> Install prerequisites" $GREEN
 sudo pacman --noconfirm -S openssh stow git
 eval $(ssh-agent)
 
-msg "==> Change permission of ssh and gnupg" $GREEN
+msg "==> Change permission of ssh and gnupg if necessary" $GREEN
 sudo chmod 600 ~/.gnupg/*
 sudo chmod 700 ~/.gnupg
 sudo chmod 600 ~/.ssh/*
