@@ -13,6 +13,8 @@ done | dzen2 -dock -p -ta l &
 
 xss-lock slock &
 
+[[ -f ~/.x-local-config ]] && . ~/.x-local-config
+
 emacs --daemon -f exwm-enable
 exec emacsclient -c	       	
 
