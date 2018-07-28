@@ -1,6 +1,11 @@
 (require 'mu4e)
 (require 'smtpmail)
 
+(with-eval-after-load 'mu4e (require 'mu4e-conversation))
+(global-mu4e-conversation-mode)
+
+
+
 (setq mu4e-maildir "/home/tuedachu/.cache/mail")
 (setq mu4e-get-mail-command "mbsync -a")
 
@@ -43,12 +48,15 @@
 (setq mu4e-update-interval 120)
 
 (require 'org-contacts)
-(add-to-list 'org-contacts-files "~/perso/contacts.org")
+(setq org-contacts-files '("/home/tuedachu/perso/contacts.org.gpg"))
+(setq mu4e-org-contacts-file "~/perso/contacts.org.gpg")
+(setq mu4e-compose-complete-only-personal nil
+      mu4e-compose-complete-addresses t)
 
-; To speed up indexing process
-;(setq
-;       mu4e-index-cleanup nil      ;; don't do a full cleanup check
-;       mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
+					; To speed up indexing process
+					;(setq
+					;       mu4e-index-cleanup nil      ;; don't do a full cleanup check
+					;       mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
 
 ;; Directory to save attachments
 (setq mu4e-attachment-dir  "~/Downloads") ;the directorty could be returned by a user defined function.
@@ -74,12 +82,12 @@
 			   (mu4e-message-contact-field-matches msg
 							       '(:from :to) "arnaud.hoffmann90@gmail.com")))
 	   :vars '((user-mail-address	    . "arnaud.hoffmann90@gmail.com"  )
-		    (user-full-name	    . "Arnaud Hoffmann" )
-		    (mu4e-compose-signature . "Arnaud")
-		    (smtpmail-smtp-server .  "smtp.gmail.com")
-		    (smtpmail-smtp-service . 465)
-		    (smtpmail-smtp-user    . "arnaud.hoffmann90@gmail.com")
-		    (smtpmail-stream-type . ssl)))
+		   (user-full-name	    . "Arnaud Hoffmann" )
+		   (mu4e-compose-signature . "Arnaud")
+		   (smtpmail-smtp-server .  "smtp.gmail.com")
+		   (smtpmail-smtp-service . 465)
+		   (smtpmail-smtp-user    . "arnaud.hoffmann90@gmail.com")
+		   (smtpmail-stream-type . ssl)))
 	 ,(make-mu4e-context
 	   :name "tuedachu"
 	   :match-func (lambda (msg)
@@ -87,15 +95,15 @@
 			   (mu4e-message-contact-field-matches msg
 							       '(:from :to) "tuedachu@gmail.com")))
 	   :vars '((user-mail-address	     . "tuedachu@gmail.com" )
-		    (user-full-name	     . "Arnaud Hoffmann" )
-		    (mu4e-compose-signature  .
-					      (concat
-					       "Arnaud Hoffmann\n"
-					       "aka tuedachu\n"))
-		    (smtpmail-smtp-server .  "smtp.gmail.com")
-		    (smtpmail-smtp-service . 465)
-		    (smtpmail-smtp-user    . "tuedachu@gmail.com")
-		    (smtpmail-stream-type . ssl)))))
+		   (user-full-name	     . "Arnaud Hoffmann" )
+		   (mu4e-compose-signature  .
+					    (concat
+					     "Arnaud Hoffmann\n"
+					     "aka tuedachu\n"))
+		   (smtpmail-smtp-server .  "smtp.gmail.com")
+		   (smtpmail-smtp-service . 465)
+		   (smtpmail-smtp-user    . "tuedachu@gmail.com")
+		   (smtpmail-stream-type . ssl)))))
 
 
 ;;; This sets `mu4e-user-mail-address-list' to the concatenation of all
