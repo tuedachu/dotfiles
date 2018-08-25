@@ -114,7 +114,7 @@
 
 (if (file-exists-p "lisp/myYoga-config.el")
     (load "myYoga-config.el"))
-(require 'transfer-sh)
+;;(require 'transfer-sh)
 
 (setq magit-diff-refine-hunk 'all)
 (put 'erase-buffer 'disabled nil)

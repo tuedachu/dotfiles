@@ -1,7 +1,11 @@
 [user]
-	email = tuedachu@gmail.com
-	name = tuedachu
+email = tuedachu@gmail.com
+name = tuedachu
 
 [core]
-	pager=cat
+pager=cat
 
+
+[diff "gpg"]
+binary = true
+textconv = gpg -d --quiet --yes --compress-algo=none --no-encrypt-to
