@@ -84,3 +84,9 @@
 
 ;; magit
 (exwm-input-set-key (kbd "s-m") 'magit-status)
+
+;; direct access to TODO file
+(defun tuedachu/open-todo-file ()
+  (interactive)
+  (org-open-file "~/perso/TODO.org.gpg"))
+(exwm-input-set-key (kbd "s-t") 'tuedachu/open-todo-file)
