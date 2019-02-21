@@ -36,6 +36,7 @@
 (load "config-elisp-mode")
 (load "custom-functions")
 
+(with-eval-after-load 'org-mode (require 'config-org-mode))
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
@@ -65,7 +66,7 @@
 (global-set-key (kbd "<menu>") nil)
 
 ;; Org files used for the agenda
-(setq org-agenda-files '("~/perso/todo.org"))
+(setq org-agenda-files '("~/perso/TODO.org.gpg" "~/perso/birthday.org"))
 
 ;; TODO: move eshell config into a separate file
 (load "patch-eshell")
