@@ -137,3 +137,6 @@
 
 (define-key mu4e-view-mode-map (kbd "d") 'tuedachu-mu4e-view-move-to-trash)
 (define-key mu4e-headers-mode-map (kbd "d") 'tuedachu-mu4e-headers-move-to-trash)
+
+(minibuffer-message "Finished loading mu4e config...")
+(provide 'config-mu4e)

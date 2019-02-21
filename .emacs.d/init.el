@@ -33,7 +33,6 @@
 
 (load "config-exwm")
 (load "config-helm")
-(load "config-mu4e")
 (load "config-elisp-mode")
 (load "custom-functions")
 
@@ -119,3 +118,10 @@
 (setq magit-diff-refine-hunk 'all)
 (put 'erase-buffer 'disabled nil)
 (put 'emms-browser-delete-files 'disabled nil)
+
+;; email
+;; TODO: Find a solution to this issue
+(defun email ()
+  (interactive)
+  (require 'config-mu4e)
+  (mu4e))
