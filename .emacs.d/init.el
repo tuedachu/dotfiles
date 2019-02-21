@@ -20,7 +20,7 @@
   (add-to-list 'load-path site-lisp)
   (ambrevar/package-refresh-load-path site-lisp))
 
-(setq package-selected-packages '(ws-butler web-mode company-tern tern js2-mode helm-pass helm-company company-go company go-eldoc pdf-tools undo-tree lua-mode markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm))
+(setq package-selected-packages '(pinentry mu4e-conversation ws-butler web-mode company-tern tern js2-mode helm-pass helm-company company-go company go-eldoc pdf-tools undo-tree lua-mode markdown-mode helm-mu go-mode emms-player-mpv wgrep-helm wgrep helm-emms transmission fish-completion magit helm-system-packages helm with-editor org-plus-contrib exwm))
 
 ;; start early.
 (pinentry-start)
