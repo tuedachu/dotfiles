@@ -41,6 +41,7 @@
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
 (with-eval-after-load 'racket-mode (require 'config-racket-mode))
+(with-eval-after-load 'python-mode (require 'config-python-mode))
 
 ;; html
 (require 'web-mode)
