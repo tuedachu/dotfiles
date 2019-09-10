@@ -25,3 +25,18 @@
   (kill-buffer))
 
 (exwm-input-set-key (kbd "<f11>") 'tuedachu/publish-website)
+
+(defun tuedachu/update-emacs-package-list ()
+  "Update the list of Emacs packages."
+  (interactive)
+  (write-region (concat "(require 'package)\n"
+                        "(add-to-list 'package-archives '(\"melpa\" . \"http://melpa.milkbox.net/packages/\"))\n"
+                        "(add-to-list 'package-archives '(\"org\" .\"http://orgmode.org/elpa/\"))\n"
+                        "(package-initialize)\n\n"
+                        "(setq package-selected-packages '("
+                        (mapconcat 'identity (eshell-stringify-list package-activated-list) " ")
+                        "))\n\n"
+                        "(package-refresh-contents)\n"
+                        "(package-install-selected-packages)\n")
+                nil
+                "/home/tuedachu/dotfiles/.emacs.d/first-installation.el"))
