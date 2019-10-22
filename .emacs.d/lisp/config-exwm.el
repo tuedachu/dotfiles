@@ -53,6 +53,11 @@
 				  (interactive)
 				  (start-process-shell-command "qutebrowser" nil "qutebrowser")))
 
+(exwm-input-set-key (kbd "s-c") (lambda ()
+				  (interactive)
+				  (start-process-shell-command "chromium" nil "chromium")))
+
+
 ;; 's-b' : Change buffer (C-x b)
 (exwm-input-set-key (kbd "s-b") 'helm-mini)
 
