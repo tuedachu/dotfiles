@@ -12,6 +12,8 @@ settings:
     global: true
   bindings.commands:
     global: null
+  completion.web_history.exclude:
+    global: null
   editor.command:
     global:
     - emacsclient
@@ -22,7 +24,13 @@ settings:
     global: true
   tabs.title.alignment:
     global: left
+  url.searchengines:
+    global:
+      DEFAULT: https://duckduckgo.com/?q={}
+      wfr: https://fr.wikipedia.org/w/index.php?search={}
+      wiki: https://en.wikipedia.org/w/index.php?search={}
+      yt: https://youtube.com/results?search_query={}
   window.title_format:
-    global: '{host} - {title}{title_sep}qutebrowser'
+    global: '{host} - {current_title}{title_sep}qutebrowser'
   zoom.default:
     global: 150%
