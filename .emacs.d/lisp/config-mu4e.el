@@ -119,7 +119,7 @@
 
 
 
-(global-set-key (kbd "s-s") 'helm-mu)
+;;(global-set-key (kbd "s-s") 'helm-mu)
 
 
 ;; TODO: Flag the mail read after being delted
