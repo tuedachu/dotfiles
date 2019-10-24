@@ -1,8 +1,8 @@
 (require 'mu4e)
 (require 'smtpmail)
 
-(with-eval-after-load 'mu4e (require 'mu4e-conversation))
-(global-mu4e-conversation-mode)
+;;(with-eval-after-load 'mu4e (require 'mu4e-conversation))
+;;(global-mu4e-conversation-mode)
 
 
 
@@ -137,6 +137,8 @@
 
 (define-key mu4e-view-mode-map (kbd "d") 'tuedachu-mu4e-view-move-to-trash)
 (define-key mu4e-headers-mode-map (kbd "d") 'tuedachu-mu4e-headers-move-to-trash)
+
+(setq mml-secure-openpgp-encrypt-to-self t)
 
 (minibuffer-message "Finished loading mu4e config...")
 (provide 'config-mu4e)
