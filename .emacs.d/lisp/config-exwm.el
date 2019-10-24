@@ -69,7 +69,7 @@
 
 (exwm-input-set-key (kbd "s-p") 'helm-pass)
 
-(exwm-input-set-key (kbd "s-c") 'helm-resume)
+(exwm-input-set-key (kbd "s-x") 'helm-resume)
 
 
 ;; 's-r': Reset
