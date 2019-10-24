@@ -1,8 +1,11 @@
-(require 'py-autopep8)
-
-
 (require 'elpy)
-(elpy-enable)
+;;(elpy-enable)
+
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
 
 ;;Remove indentation highlighting
 (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
@@ -14,19 +17,11 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-;; autopep8
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(add-hook 'python-mode-hook
+          (lambda()
+            (setq company-idle-delay nil)
+            (setq company-tooltip-idle-delay nil)))
 
-;; ;; company
-;; (require 'company)
-;; (autoload 'helm-company "helm-company")
-(set (make-local-variable 'company-backends) 'company-jedi)
-;; (with-eval-after-load 'company
-;;   (define-key company-mode-map (kbd "<M-tab>") 'helm-company)
-;;   (define-key company-active-map (kbd "<M-tab>") 'helm-company))
-;; (company-mode)
-
-(setq company-idle-delay nil)
 
 (define-key elpy-mode-map (kbd "C-x C-e") 'elpy-shell-send-statement)
 (define-key elpy-mode-map (kbd "<f5>") 'compile)
