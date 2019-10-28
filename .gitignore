@@ -1,3 +1,4 @@
 .emacs.d/eshell/history
 .emacs.d/eshell/lastdir
 .local/share
+.emacs.d/site-lisp
