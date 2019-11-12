@@ -36,6 +36,8 @@
 (load "config-elisp-mode")
 (load "custom-functions")
 (load "config-python-mode")
+(load "config-ydl4e.el")
+
 
 (with-eval-after-load 'org-mode (require 'config-org-mode))
 (with-eval-after-load 'emms (require 'config-emms))
