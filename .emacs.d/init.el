@@ -131,3 +131,6 @@
   (interactive)
   (require 'config-mu4e)
   (mu4e))
+
+;; Add pdf tools
+(pdf-tools-install)
