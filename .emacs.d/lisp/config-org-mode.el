@@ -16,23 +16,14 @@
   (previous-line))
 
 
+(add-hook 'org-mode-hook (lambda ()
+                           (add-hook 'before-save-hook
+                                     #'tuedachu/indent
+                                     nil
+                                     'make-it-local)))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(setq org-src-preserve-indentation t)
 
 (provide 'config-org-mode)

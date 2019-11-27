@@ -33,4 +33,4 @@ settings:
   window.title_format:
     global: '{host} - {current_title}{title_sep}qutebrowser'
   zoom.default:
-    global: 150%
+    global: 100%

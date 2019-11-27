@@ -57,6 +57,9 @@
 				  (interactive)
 				  (start-process-shell-command "chromium" nil "chromium")))
 
+(exwm-input-set-key (kbd "s-o") (lambda ()
+				  (interactive)
+				  (start-process-shell-command "libreoffice" nil "libreoffice")))
 
 ;; 's-b' : Change buffer (C-x b)
 (exwm-input-set-key (kbd "s-b") 'helm-mini)

@@ -38,8 +38,8 @@
 (load "config-python-mode")
 (load "config-ydl4e.el")
 
-
-(with-eval-after-load 'org-mode (require 'config-org-mode))
+;;TODO: check indentation in org mode
+(with-eval-after-load 'org-mode (require 'config-org-mode.el))
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
