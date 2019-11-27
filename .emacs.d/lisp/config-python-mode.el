@@ -17,10 +17,33 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
+
 (add-hook 'python-mode-hook
           (lambda()
             (setq company-idle-delay nil)
-            (setq company-tooltip-idle-delay nil)))
+            (setq company-tooltip-idle-delay nil)
+            (display-line-numbers-mode)
+            (setq fill-column 120)))
+
+
+
+;; TODO: Create a help buffer to display
+;; TODO: Format proper columns
+;;
+;; This is a decent idea for beginners who are on the learning curve with emacs
+;;
+;; (setq tuedachu/list-shortcuts-python nil)
+;; (defun tuedachu/add-shortcut-to-python-map (shortcut symbol)
+;;   "Define new keyboard binding and add the short-cut in the
+;;     list."
+;;   (define-key elpy-mode-map (kbd shortcut) symbol)
+;;   (concat tuedachu/list-shortcuts-python
+;;           "\n  - "
+;;           shortcut
+;;           "        "
+;;           (symbol-name symbol)))
+
+
 
 
 (define-key elpy-mode-map (kbd "C-x C-e") 'elpy-shell-send-statement)
