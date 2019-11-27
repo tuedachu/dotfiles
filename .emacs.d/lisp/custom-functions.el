@@ -40,3 +40,13 @@
                         "(package-install-selected-packages)\n")
                 nil
                 "/home/tuedachu/dotfiles/.emacs.d/first-installation.el"))
+
+(defun tuedachu/revert-buffer-no-asking ()
+  (interactive)
+  (revert-buffer nil t))
+(exwm-input-set-key (kbd "C-®") 'tuedachu/revert-buffer-no-asking)
+
+
+(defun tuedachu/butler-clean-buffer ()
+  (interactive)
+  (ws-butler-clean-region (point-min) (point-max)))
