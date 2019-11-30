@@ -39,12 +39,16 @@
 (load "config-ydl4e.el")
 
 ;;TODO: check indentation in org mode
-(with-eval-after-load 'org-mode (require 'config-org-mode.el))
+(with-eval-after-load 'org-mode (require 'config-org-mode))
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
 (with-eval-after-load 'racket-mode (require 'config-racket-mode))
 
+
+;;LaTeX
+(add-to-list 'auto-mode-alist '("\\.tex?\\'" . LaTeX-mode))
+(with-eval-after-load 'LaTeX-mode (require 'config-latex-mode))
 
 ;; html
 (require 'web-mode)
@@ -77,6 +81,7 @@
 (load "patch-eshell")
 (with-eval-after-load 'em-term
   (add-to-list 'eshell-visual-commands "htop")
+  (add-to-list 'eshell-visual-commands "wifi-menu")
   (add-to-list 'eshell-visual-commands "watch")
   (add-to-list 'eshell-visual-commands "gtypist")
   (add-to-list 'eshell-visual-commands "ncdu"))
@@ -133,4 +138,4 @@
   (mu4e))
 
 ;; Add pdf tools
-(pdf-tools-install)
+;;(pdf-tools-install)
