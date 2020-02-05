@@ -37,9 +37,8 @@
 (load "custom-functions")
 (load "config-python-mode")
 (load "config-ydl4e.el")
+(load "config-org-mode.el")
 
-;;TODO: check indentation in org mode
-(with-eval-after-load 'org-mode (require 'config-org-mode))
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
@@ -58,6 +57,7 @@
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (with-eval-after-load 'js2-mode (require 'config-js-mode))
+
 
 (setq custom-file "/tmp/emacs-custom-file.el")
 
