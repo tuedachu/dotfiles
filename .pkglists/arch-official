@@ -20,6 +20,7 @@ certbot
 cheese
 chromaprint
 chromium
+code
 coreutils
 cryptsetup
 dash
@@ -28,6 +29,8 @@ dhcpcd
 dialog
 diffutils
 dmidecode
+docker
+docker-compose
 dzen2
 e2fsprogs
 ed
@@ -138,6 +141,7 @@ man-db
 man-pages
 mdadm
 mediainfo
+mesa-demos
 mlocate
 mousetweaks
 mps-youtube
@@ -169,9 +173,12 @@ pulseaudio
 pulseaudio-alsa
 pwgen
 pycharm-community-edition
+python-flask
+python-gevent
 python-pip
 qutebrowser
 racket
+redis
 reiserfsprogs
 rygel
 s-nail
@@ -185,6 +192,7 @@ sudo
 sushi
 sxiv
 sysfsutils
+sysstat
 systemd-sysvcompat
 tar
 texinfo
@@ -211,7 +219,8 @@ wine
 wpa_supplicant
 xcape
 xdg-user-dirs-gtk
-xf86-video-intel
+xf86-video-fbdev
+xf86-video-vesa
 xfsprogs
 xorg-bdftopcf
 xorg-iceauth
