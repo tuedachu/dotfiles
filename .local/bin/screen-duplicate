@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xrandr --output eDP-1 --primary --auto --output HDMI-1 --off
+xrandr --output eDP-1 --scale 0.6x0.6 --output HDMI-1 --same-as eDP-1 --primary --auto
