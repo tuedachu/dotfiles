@@ -96,12 +96,14 @@ go
 go-tools
 grep
 grilo-plugins
+grpc
 grub
 gst-libav
 gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
+gunicorn
 gvfs
 gvfs-afc
 gvfs-goa
@@ -167,6 +169,7 @@ pciutils
 perl
 pkgconf
 poppler-glib
+postgresql
 procps-ng
 psmisc
 pulseaudio
@@ -175,6 +178,7 @@ pwgen
 pycharm-community-edition
 python-flask
 python-gevent
+python-gevent-websocket
 python-pip
 qutebrowser
 racket
