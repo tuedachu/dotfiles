@@ -50,3 +50,8 @@
 (defun tuedachu/butler-clean-buffer ()
   (interactive)
   (ws-butler-clean-region (point-min) (point-max)))
+
+
+(defun spotify()
+  (interactive)
+  (start-process-shell-command "spotify" nil "spotify"))
