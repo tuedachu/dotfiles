@@ -55,3 +55,7 @@
 (defun spotify()
   (interactive)
   (start-process-shell-command "spotify" nil "spotify"))
+
+(defun whitson-git-config()
+  (interactive)
+  (insert "[user]\n\temail = arnaud@whitson.com\n\tname = Arnaud Hoffmann"))
