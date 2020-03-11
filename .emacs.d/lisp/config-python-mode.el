@@ -18,6 +18,13 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 
+(add-hook 'elpy-mode-hook (lambda()
+                            (add-hook 'before-save-hook
+                                      'elpy-black-fix-code
+                                      nil
+                                      'make-it-local)))
+
+
 (add-hook 'python-mode-hook
           (lambda()
             (setq company-idle-delay nil)
