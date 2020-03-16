@@ -24,6 +24,9 @@
                                       nil
                                       'make-it-local)))
 
+(add-hook 'elpy-mode-hook (lambda()
+                            (add-hook 'before-save-hook
+                                      'tuedachu/butler-clean-buffer)))
 
 (add-hook 'python-mode-hook
           (lambda()
