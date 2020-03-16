@@ -1,12 +1,12 @@
 (require 'mu4e)
 (require 'smtpmail)
 
-;;(with-eval-after-load 'mu4e (require 'mu4e-conversation))
-;;(global-mu4e-conversation-mode)
+;; (with-eval-after-load 'mu4e (require 'mu4e-conversation))
+;; (global-mu4e-conversation-mode)
 
 
 
-(setq mu4e-maildir "/home/tuedachu/.cache/mail")
+(setq mu4e-maildir "/home/tuedachu/mail")
 (setq mu4e-get-mail-command "mbsync -a")
 
 (setq mu4e-hide-index-messages t)
@@ -103,7 +103,26 @@
 		   (smtpmail-smtp-server .  "smtp.gmail.com")
 		   (smtpmail-smtp-service . 465)
 		   (smtpmail-smtp-user    . "tuedachu@gmail.com")
-		   (smtpmail-stream-type . ssl)))))
+		   (smtpmail-stream-type . ssl)))
+         ,(make-mu4e-context
+	   :name "whitson"
+	   :match-func (lambda (msg)
+			 (when msg
+			   (mu4e-message-contact-field-matches msg
+							       '(:from :to) "arnaud@whitson.com")))
+	   :vars '((user-mail-address	     . "arnaud@whitson.com" )
+		   (user-full-name	     . "Arnaud Hoffmann" )
+		   (mu4e-compose-signature  .
+					    (concat
+					     "Arnaud Hoffmann\n"
+					     "Software Engineer\n\n"
+                                             "Mobile: +1-604-802-8327\n"
+                                             "www.whitson.com | arnaud@whitson.com\n\n"
+                                             "This email is confidential and may be privileged. If you have received it in error, please notify us immediately and then delete it. Please do not copy it, disclose its contents or use it for any purpose."))
+		   (smtpmail-smtp-server .  "smtp.office365.com")
+		   (smtpmail-smtp-service . 587)
+		   (smtpmail-smtp-user    . "arnaud@whitson.com")
+		   (smtpmail-stream-type . starttls)))))
 
 
 ;;; This sets `mu4e-user-mail-address-list' to the concatenation of all
