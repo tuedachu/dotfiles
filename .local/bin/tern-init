@@ -1,0 +1,33 @@
+#!/usr/bin/sh
+
+RED='\033[0;31m\033[1m'
+GREEN='\033[0;32m\033[1m'
+BOLD='\033[0m\033[1m'
+NORMAL='\033[0m'
+
+msg() #Print argument in color declared in argument 2
+{
+    echo -e $2 $1 $NORMAL
+}
+
+
+msg "Generating project file for tern..." $BOLD
+
+FILE=".tern-project"
+
+/bin/cat <<EOM >$FILE
+{
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "loadEagerly": [
+  ],
+  "plugins": {
+  }
+}
+EOM
+
+msg "Generation of tern project file completed" $BOLD
+msg "It includes all basic features. For additional features, please edit it manually." $NORMAL
+msg "You may want to force loading all your js libray by adding 'js/*.js' to loadEagerly parameter." $NORMAL
