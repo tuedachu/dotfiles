@@ -105,7 +105,7 @@
 
 
 ;; default browser
-(setq browse-url-generic-program (executable-find "qutebrowser"))
+(setq browse-url-generic-program (executable-find "chromium"))
 (setq browse-url-browser-function 'browse-url-generic)
 
 
