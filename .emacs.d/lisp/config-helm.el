@@ -31,7 +31,7 @@
 
 (global-set-key (kbd "s-f") 'helm-locate)
 
-(global-set-key (kbd "M-s f") 'helm-semantic-or-imenu)
+(global-set-key (kbd "s-i") 'helm-semantic-or-imenu)
 (global-set-key (kbd "s-s") 'helm-occur)
 
 ;;(global-set-key (kbd "s-c") 'helm-resume)
