@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+setxkbmap -layout us -variant "" -option ctrl:nocaps
+xkbcomp -I"$HOME/.xkb" "$HOME/.xkb/usim.xkb" $DISPLAY 2>/dev/null
+
