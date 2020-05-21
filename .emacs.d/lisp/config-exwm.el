@@ -61,6 +61,11 @@
 				  (interactive)
 				  (start-process-shell-command "libreoffice" nil "libreoffice")))
 
+(exwm-input-set-key (kbd "s-x") (lambda ()
+				  (interactive)
+                                  (message "launching xournal...")
+				  (start-process-shell-command "xournalpp" nil "xournalpp")))
+
 ;; 's-b' : Change buffer (C-x b)
 (exwm-input-set-key (kbd "s-b") 'helm-mini)
 
@@ -72,7 +77,7 @@
 
 (exwm-input-set-key (kbd "s-p") 'helm-pass)
 
-(exwm-input-set-key (kbd "s-x") 'helm-resume)
+(exwm-input-set-key (kbd "s-z") 'helm-resume)
 
 
 ;; 's-r': Reset
