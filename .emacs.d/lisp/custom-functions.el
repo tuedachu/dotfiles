@@ -43,6 +43,7 @@
 
 (defun tuedachu/revert-buffer-no-asking ()
   (interactive)
+  (message "Reverting buffer...")
   (revert-buffer nil t))
 (exwm-input-set-key (kbd "C-®") 'tuedachu/revert-buffer-no-asking)
 
@@ -59,3 +60,17 @@
 (defun whitson-git-config()
   (interactive)
   (insert "[user]\n\temail = arnaud@whitson.com\n\tname = Arnaud Hoffmann"))
+
+
+(defvar git-changelog-tag-list
+  '("FEATURE" "PERF" "BUG" "DOC" "INTERNAL" "TEST" "STYLE" "REFACTOR" "CHORE")
+  "List of compatible tags for git-changelog")
+
+(defun git-changelog-add-tag()
+  (interactive)
+  (insert (concat "["
+                  (completing-read "Choose a compatible tag:"
+                                   git-changelog-tag-list)
+                  "] ")))
+
+(exwm-input-set-key (kbd "s-a") 'git-changelog-add-tag)
