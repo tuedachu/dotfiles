@@ -103,3 +103,10 @@
   (interactive)
   (org-open-file "~/perso/TODO.org.gpg"))
 (exwm-input-set-key (kbd "s-t") 'tuedachu/open-todo-file)
+
+
+;;windower
+(require 'windower)
+(exwm-input-set-key (kbd "s-<tab>") 'windower-switch-to-last-buffer )
+(exwm-input-set-key (kbd "<menu>") 'windower-toggle-single)
+(exwm-input-set-key (kbd "s-<menu>") 'windower-toggle-split)
