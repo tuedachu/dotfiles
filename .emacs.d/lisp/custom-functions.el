@@ -74,3 +74,47 @@
                   "] ")))
 
 (exwm-input-set-key (kbd "s-a") 'git-changelog-add-tag)
+
+
+
+;; go-to feature
+(require 'cl-lib)
+(defun tuedachu:list-all-subfolder (folder)
+  (remove nil (mapcar (lambda (element)
+                        (let ((full-path (concat folder
+                                                 element)))
+                          (if (and (file-directory-p full-path)
+                                   (not (or (string= element ".")
+                                            (string= element ".."))))
+                              `(,element . ,full-path)
+                            nil)))
+                      (directory-files folder))))
+
+
+(defvar tuedachu::goto-list
+  nil
+  "list of all goto candidates")
+
+
+(setq tuedachu::goto-list (append tuedachu::goto-list
+                                  (tuedachu:list-all-subfolder (expand-file-name "~/whitson/02-DEV/"))
+                                  (tuedachu:list-all-subfolder (expand-file-name "~/projects/"))))
+
+(require 'eshell)
+(defun tuedachu:goto ()
+  (interactive)
+  (let* ((bufs (cl-loop for b in (mapcar 'buffer-name (buffer-list))
+                        when (helm-ff--eshell-interactive-buffer-p b)
+                        collect b))
+         (where-to-go (cdr (assoc (completing-read "Where do you want to go to?" (mapcar #'car
+                                                                                         tuedachu::goto-list))
+                                  tuedachu::goto-list)))
+         (eshell-buffer-name (if (cdr bufs)
+                                 (helm-comp-read "Switch to eshell buffer: " bufs
+                                                 :must-match t)
+                               (car bufs))))
+    (switch-to-buffer eshell-buffer-name)
+    (eshell/cd where-to-go)
+    (eshell-reset)))
+
+(exwm-input-set-key (kbd "s-SPC") 'tuedachu:goto)
