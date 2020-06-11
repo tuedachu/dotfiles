@@ -23,11 +23,10 @@ Top level forms are evaluated with `eval-defun' so that `defvar'
 (defun tuedachu/indent()
   (indent-region (point-min) (point-max)))
 
+
+(add-hook 'emacs-lisp-mode-hook #'linum-mode)
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (add-hook 'before-save-hook
                                             #'tuedachu/indent
                                             nil
                                             'make-it-local)))
-
-(add-hook 'emacs-lisp-mode-hook #'linum-mode)
-(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
