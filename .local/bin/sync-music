@@ -1,0 +1,61 @@
+#!/bin/sh
+
+PROGRAM=$(basename "$0")
+VERSION=1.0.0
+
+RED='\033[0;31m\033[1m'
+GREEN='\033[0;32m\033[1m'
+BOLD='\033[0m\033[1m'
+NORMAL='\033[0m'
+
+usage="Usage:
+
+$PROGRAM [-h] [-v] [-p]
+
+where:
+    -h  show this help text
+    -v	get program version
+    -p  launch sync"
+
+
+msg() #Print argument in color declared in argument 2
+{
+    echo -e $2 $1
+}
+
+print_program()
+{
+    msg "===  $PROGRAM $VERSION  ===" $BOLD
+    echo -e  $NORMAL "A program to automatically sync music folders"
+    echo -e  $NORMAL "'~/music' and './music' will be synched."
+    msg "" $NORMAL
+}
+
+print_usage()
+{
+ echo "$usage"
+ exit $1
+}
+
+DRY_RUN="--dry-run"
+while getopts ':hvp' option; do
+  case "$option" in
+    h) print_program
+       print_usage 0
+       ;;
+    v) msg "v $VERSION" $NORMAL
+       exit 0
+       ;;
+    p) DRY_RUN=""
+       ;;
+   \?) msg "" $RED
+       printf "ERROR: Illegal option: -%s\n" "$OPTARG" >&2
+       print_usage 1
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+print_program
+
+rsync -rvh --progress --size-only $DRY_RUN ~/music/ ./music/

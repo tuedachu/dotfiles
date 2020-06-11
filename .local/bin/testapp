@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+counter=0
+
+
+while [ $counter -le 100 ]; do
+    printf " %f%%\n" $((counter/10))
+    counter=$((counter+1))
+    sleep 0.01
+done
