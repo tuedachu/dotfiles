@@ -36,14 +36,16 @@
 (load "config-elisp-mode")
 (load "custom-functions")
 (load "config-python-mode")
-(load "config-ydl4e.el")
+(load "config-ytdl.el")
 (load "config-org-mode.el")
+(load "config-cl.el")
+(load "pdf-config.el")
 
 (with-eval-after-load 'emms (require 'config-emms))
 (with-eval-after-load 'c-mode (require 'config-c-mode))
 (with-eval-after-load 'go-mode (require 'config-go-mode))
 (with-eval-after-load 'racket-mode (require 'config-racket-mode))
-
+(with-eval-after-load 'markdown-mode (require 'config-markdown))
 
 ;;LaTeX
 (add-to-list 'auto-mode-alist '("\\.tex?\\'" . LaTeX-mode))
@@ -73,6 +75,13 @@
 
 ;; Bind menu to nothing
 (global-set-key (kbd "<menu>") nil)
+
+(global-set-key (kbd "<f9>") 'gif-screencast)
+(with-eval-after-load 'gif-screencast
+  (global-set-key (kbd "<f9>") 'gif-screencast-start-or-stop))
+
+
+
 
 ;; Org files used for the agenda
 (setq org-agenda-files '("~/perso/TODO.org.gpg" "~/perso/birthday.org"))
@@ -111,12 +120,14 @@
 
 (setq make-backup-files nil)
 
+(setq global-linum-mode t)
+
 (require 'undo-tree)
 (global-undo-tree-mode)
 
 
-;; (add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
-;; (load "config-phz")
+(add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
+(load "config-phz")
 
 ;; Prevent to split vertically the window
 (setq split-height-threshold nil)
@@ -136,6 +147,7 @@
   (interactive)
   (require 'config-mu4e)
   (mu4e))
+
 
 ;; Add pdf tools
 ;;(pdf-tools-install)

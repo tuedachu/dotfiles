@@ -1,8 +1,7 @@
 .emacs.d/eshell/history
 .emacs.d/eshell/lastdir
 .local/share
-.emacs.d/site-lisp
-.emacs.d/lisp
+.emacs.d/site-lispk
 .emacs.d/emms
 .emacs.d/elpa
 .emacs.d/elpy
