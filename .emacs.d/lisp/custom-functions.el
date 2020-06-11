@@ -24,7 +24,7 @@
   (tuedachu/eval-buffer)
   (kill-buffer))
 
-(exwm-input-set-key (kbd "<f11>") 'tuedachu/publish-website)
+;; (exwm-input-set-key (kbd "<f11>") 'tuedachu/publish-website)
 
 (defun tuedachu/update-emacs-package-list ()
   "Update the list of Emacs packages."
