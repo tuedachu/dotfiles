@@ -109,4 +109,11 @@
 (require 'windower)
 (exwm-input-set-key (kbd "s-<tab>") 'windower-switch-to-last-buffer )
 (exwm-input-set-key (kbd "<menu>") 'windower-toggle-single)
-(exwm-input-set-key (kbd "s-<menu>") 'windower-toggle-split)
+(exwm-input-set-key (kbd "s-<menu>") 'windower-swap)
+
+
+;; music
+(exwm-input-set-key (kbd "<XF86AudioNext>") 'emms-next)
+(exwm-input-set-key (kbd "<XF86AudioPrev>") 'emms-previous)
+(exwm-input-set-key (kbd "<XF86AudioPlay>") 'emms-pause)
+(exwm-input-set-key (kbd "<XF86AudioStop>") 'emms-stop)
