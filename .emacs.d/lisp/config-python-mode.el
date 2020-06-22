@@ -35,9 +35,6 @@
             (display-line-numbers-mode)
             (setq fill-column 120)))
 
-(require 'smartparens)
-(add-hook 'python-mode-hook #'smartparens-mode)
-
 ;; TODO: Create a help buffer to display
 ;; TODO: Format proper columns
 ;;
