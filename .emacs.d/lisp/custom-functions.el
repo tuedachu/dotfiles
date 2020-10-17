@@ -130,3 +130,21 @@ Each element is (display-name . full path). ")
     (eshell-reset)))
 
 (exwm-input-set-key (kbd "s-SPC") 'tuedachu:goto)
+
+
+(defun tuedachu:test-recipe()
+  (interactive)
+  (let* ((package-name (read-from-minibuffer "Name of the package: "))
+         (repo (read-from-minibuffer "Repository: " (concat "tuedachu/"
+                                                            package-name)))
+         (fetcher (read-from-minibuffer "Fetcher: " "gitlab"))
+         (branch (read-from-minibuffer "Branch: " "master")))
+    (insert (concat "RECIPE='("
+                    package-name
+                    " :repo \""
+                    repo
+                    "\" :fetcher "
+                    fetcher
+                    " :branch \""
+                    branch
+                    "\")' make"))))
