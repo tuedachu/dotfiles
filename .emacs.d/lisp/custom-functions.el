@@ -63,7 +63,9 @@
 
 
 (defvar git-changelog-tag-list
-  '("FEATURE" "PERF" "BUG" "DOC" "INTERNAL" "TEST" "STYLE" "REFACTOR" "CHORE")
+  (split-string (or (getenv "GIT_CHANGELOG_KEYWORDS")
+                    "FEATURE PERF BUG DOC INTERNAL TEST STYLE REFACTOR CHORE")
+                " ")
   "List of compatible tags for git-changelog")
 
 (defun git-changelog-add-tag()
