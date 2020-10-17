@@ -1,0 +1,15 @@
+#!/usr/bin/sh
+
+if [ -z "$1" ]; then
+    png_file="screenshot.png"
+else
+    png_file=$1
+fi
+
+echo "Print screen"
+echo "Screen shot will be saved here: $png_file"
+xwd_file=${png_file%.png}.xwd
+xwd -out $xwd_file
+convert $xwd_file $png_file
+rm $xwd_file
+echo "Script completed"
