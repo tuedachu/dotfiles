@@ -37,13 +37,18 @@
          ((or (and msg
 		   (string-prefix-p "/perso/" (mu4e-message-field msg :maildir)))
 	      (string= user-mail-address "arnaud.hoffmann90@gmail.com")) "/perso/[Gmail]/.Sent Mail")
-         (t "/tuedachu/[Gmail]/.Sent Mail")))
+         ((or (and msg
+		   (string-prefix-p "/tuedachu/" (mu4e-message-field msg :maildir)))
+	      (string= user-mail-address "tuedachu@gmail.com")) "/tuedachu/[Gmail]/.Sent Mail")
+         (t "/mail/Sent")))
       mu4e-trash-folder
       (lambda (msg)
 	(cond
 	 ((string-prefix-p "/perso/" (mu4e-message-field msg :maildir))
 	  "/perso/[Gmail]/.Trash")
-	 (t "/tuedachu/[Gmail]/.Trash"))))
+         ((string-prefix-p "/tuedachu/" (mu4e-message-field msg :maildir))
+	  "/tuedachu/[Gmail]/.Trash")
+	 (t "/mail/Trash"))))
 
 (setq mu4e-update-interval 120)
 
@@ -105,24 +110,18 @@
 		   (smtpmail-smtp-user    . "tuedachu@gmail.com")
 		   (smtpmail-stream-type . ssl)))
          ,(make-mu4e-context
-	   :name "whitson"
+	   :name "mail"
 	   :match-func (lambda (msg)
 			 (when msg
 			   (mu4e-message-contact-field-matches msg
-							       '(:from :to) "arnaud@whitson.com")))
-	   :vars '((user-mail-address	     . "arnaud@whitson.com" )
+							       '(:from :to) "mail@tuedachu.xyz")))
+	   :vars '((user-mail-address	     . "mail@tuedachu.xyz" )
 		   (user-full-name	     . "Arnaud Hoffmann" )
-		   (mu4e-compose-signature  .
-					    (concat
-					     "Arnaud Hoffmann\n"
-					     "Software Engineer\n\n"
-                                             "Mobile: +1-604-802-8327\n"
-                                             "www.whitson.com | arnaud@whitson.com\n\n"
-                                             "This email is confidential and may be privileged. If you have received it in error, please notify us immediately and then delete it. Please do not copy it, disclose its contents or use it for any purpose."))
-		   (smtpmail-smtp-server .  "smtp.office365.com")
-		   (smtpmail-smtp-service . 587)
-		   (smtpmail-smtp-user    . "arnaud@whitson.com")
-		   (smtpmail-stream-type . starttls)))))
+		   (mu4e-compose-signature  . "Arnaud")
+		   (smtpmail-smtp-server .  "mail.gandi.net")
+		   (smtpmail-smtp-service . 465)
+		   (smtpmail-smtp-user    . "mail@tuedachu.xyz")
+		   (smtpmail-stream-type . ssl)))))
 
 
 ;;; This sets `mu4e-user-mail-address-list' to the concatenation of all
@@ -138,7 +137,7 @@
 
 
 
-;;(global-set-key (kbd "s-s") 'helm-mu)
+(global-set-key (kbd "C-M-s") 'helm-mu)
 
 
 ;; TODO: Flag the mail read after being delted
@@ -156,6 +155,7 @@
 
 (define-key mu4e-view-mode-map (kbd "d") 'tuedachu-mu4e-view-move-to-trash)
 (define-key mu4e-headers-mode-map (kbd "d") 'tuedachu-mu4e-headers-move-to-trash)
+(define-key mu4e-compose-mode-map (kbd "C-M-e") 'mml-secure-message-sign-encrypt)
 
 (setq mml-secure-openpgp-encrypt-to-self t)
 
