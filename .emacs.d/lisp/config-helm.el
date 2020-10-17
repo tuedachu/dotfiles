@@ -2,6 +2,9 @@
 (require 'helm)
 (require 'helm-config)
 
+(setq helm-ff-cache-mode-lighter " ⚒"
+      helm-ff-keep-cached-candidates nil)
+
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
