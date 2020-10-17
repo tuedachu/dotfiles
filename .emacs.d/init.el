@@ -1,5 +1,5 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
@@ -81,8 +81,6 @@
   (global-set-key (kbd "<f9>") 'gif-screencast-start-or-stop))
 
 
-
-
 ;; Org files used for the agenda
 (setq org-agenda-files '("~/perso/TODO.org.gpg" "~/perso/birthday.org"))
 
@@ -127,7 +125,6 @@
 
 
 (add-to-list 'load-path (concat user-emacs-directory "PhzCompMode"))
-(load "config-phz")
 
 ;; Prevent to split vertically the window
 (setq split-height-threshold nil)
@@ -139,7 +136,6 @@
 
 (setq magit-diff-refine-hunk 'all)
 (put 'erase-buffer 'disabled nil)
-(put 'emms-browser-delete-files 'disabled nil)
 
 ;; email
 ;; TODO: Find a solution to this issue
@@ -150,4 +146,11 @@
 
 
 ;; Add pdf tools
-;;(pdf-tools-install)
+;; (pdf-tools-install)
+
+;; (require 'udiskie)
+
+;; (load "config-phz")
+
+;; (add-to-list 'load-path "~/projects/Emacs-packages/PhazeComp-mode")
+(put 'emms-browser-delete-files 'disabled nil)
