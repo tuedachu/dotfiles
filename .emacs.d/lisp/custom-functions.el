@@ -95,21 +95,31 @@
 
 (defvar tuedachu::goto-list
   nil
-  "list of all goto candidates")
+  "List of all goto candidates for `tuedachu::goto'.
 
+Each element is (display-name . full path). ")
 
-(setq tuedachu::goto-list (append tuedachu::goto-list
-                                  (tuedachu:list-all-subfolder (expand-file-name "~/whitson/02-DEV/"))
-                                  (tuedachu:list-all-subfolder (expand-file-name "~/projects/"))))
+(setq tuedachu::goto-list (append (tuedachu:list-all-subfolder (expand-file-name "~/whitson/02-DEV/"))
+                                  (tuedachu:list-all-subfolder (expand-file-name "~/projects/"))
+                                  (mapcar (lambda (folder)
+                                            `(,folder ,(expand-file-name folder)))
+                                          '("~/music/"
+                                            "~/projects/"
+                                            "~/tuedachu-consulting/"
+                                            "~/SOFTWARE/"
+                                            "~/website"
+                                            "~/whitson"
+                                            "~/Downloads"
+                                            "~/temp"))))
 
 (require 'eshell)
 (defun tuedachu:goto ()
   (interactive)
   (let* ((bufs (cl-loop for b in (mapcar 'buffer-name (buffer-list))
-                        when (helm-ff--eshell-interactive-buffer-p b)
+                        when (helm-ff--shell-interactive-buffer-p b)
                         collect b))
-         (where-to-go (cdr (assoc (completing-read "Where do you want to go to?" (mapcar #'car
-                                                                                         tuedachu::goto-list))
+         (where-to-go (cdr (assoc (completing-read "Where do you want to go to? " (mapcar #'car
+                                                                                          tuedachu::goto-list))
                                   tuedachu::goto-list)))
          (eshell-buffer-name (if (cdr bufs)
                                  (helm-comp-read "Switch to eshell buffer: " bufs
