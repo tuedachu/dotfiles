@@ -1,1 +1,2 @@
+alias nil "" $*
 alias mkdir mkdir -p $*
